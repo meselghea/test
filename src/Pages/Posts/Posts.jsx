@@ -9,7 +9,7 @@ const Posts = () => {
   const [posts, setPosts] = useState([]);
 
   const fetchPosts = async () => {
-    const res = await axios.get(config.apiUrl);
+    const res = await axios.get(`${config.apiUrl}/posts`);
     setPosts(res.data);
   };
 
@@ -19,7 +19,7 @@ const Posts = () => {
 
   const handleDelete = async (post) => {
     setPosts(posts.filter((p) => p._id !== post._id));
-    await axios.delete(`${config.apiUrl}/${post._id}`);
+    await axios.delete(`${config.apiUrl}/posts${post._id}`);
   };
 
   return (
